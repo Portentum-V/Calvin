@@ -45,21 +45,20 @@ async def ip(ctx):
     ip_str = httpRequest.read().decode("utf-8").strip()
     await ctx.send(f'Current public IP: `{ip_str}`')
 
-@bot.command(aliases=['status'])
-async def mineStats(ctx):
-    print('Attempted status check: {0}'.format(_currenttime()))
-    serverInfo = []
-    for s in SERVERS:
-        try:
-            output = subprocess.check_output(f"systemctl status {s} -l", shell=True).decode().split('\n')
-            status = output[2].strip().split()[1:3]
-            command = output[-2]
-            serverInfo.append(f"Server `{s}`\n```\nStatus: {' '.join(status)}\nLast log: {command}\n```")
-        except Exception as e:
-            print(e)
-            serverInfo.append(f"Server `{s}` has fallen off the face of the earth.")
-
-    await ctx.send('\n'.join(serverInfo))
+#@bot.command(aliases=['status'])
+#async def mineStats(ctx):
+#    print('Attempted status check: {0}'.format(_currenttime()))
+#    serverInfo = []
+#    for s in SERVERS:
+#        try:
+#            output = subprocess.check_output(f"systemctl status {s} -l", shell=True).decode().split('\n')
+#            status = output[2].strip().split()[1:3]
+#            command = output[-2]
+#            serverInfo.append(f"Server `{s}`\n```\nStatus: {' '.join(status)}\nLast log: {command}\n```")
+#        except Exception as e:
+#            print(e)
+#            serverInfo.append(f"Server `{s}` has fallen off the face of the earth.")
+#    await ctx.send('\n'.join(serverInfo))
 
 @bot.command()
 async def hobbes(ctx):
